@@ -1,0 +1,18 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/postgreDB</property>
+        <property name="connection.username">vladimir</property>
+        <property name="connection.password">postgres</property>
+
+        <!--        <property name="connection.pool_size">1</property>-->
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="show_sql">true</property>
+
+        <mapping class="ru.synergy.models.User"/>
+        <mapping class="ru.synergy.models.Contact"/>
+
+    </session-factory>
+</hibernate-configuration>
