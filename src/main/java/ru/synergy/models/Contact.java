@@ -1,11 +1,9 @@
 package ru.synergy.models;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-//import org.hibernate.annotations.Entity;
-//import org.hibernate.annotations.Table;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -29,7 +27,17 @@ public class Contact implements Serializable {
     private String phone;
 
     @Column(name = "email", length = 100)
-    String email;
+    private String email;
+
+    public Contact() {
+    }
+
+    public Contact(User user, String contactName, String phone, String email) {
+        this.user = user;
+        this.contactName = contactName;
+        this.phone = phone;
+        this.email = email;
+    }
 
     @Override
     public String toString() {

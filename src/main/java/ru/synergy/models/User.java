@@ -1,15 +1,13 @@
 package ru.synergy.models;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -33,6 +31,24 @@ public class User {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Contact> contacts = new ArrayList<>();
 //    private Set<Contact> contacts = new LinkedHashSet<>();
+
+
+    public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public User(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public User(String name, List<Contact> contacts) {
+        this.name = name;
+        this.contacts = contacts;
+    }
 
     @Override
     public String toString() {
