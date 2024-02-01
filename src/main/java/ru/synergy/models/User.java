@@ -7,7 +7,9 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -29,8 +31,8 @@ public class User {
 //@OnDelete(action = OnDeleteAction.CASCADE) тоже значит все комментарии после удаления поста Post удаляются из базы данных
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Contact> contacts = new ArrayList<>();
-//    private Set<Contact> contacts = new LinkedHashSet<>();
+//    private List<Contact> contacts = new ArrayList<>();
+    private Set<Contact> contacts = new LinkedHashSet<>();
 
 
     public User() {
@@ -40,12 +42,7 @@ public class User {
         this.name = name;
     }
 
-    public User(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public User(String name, List<Contact> contacts) {
+    public User(String name, Set<Contact> contacts) {
         this.name = name;
         this.contacts = contacts;
     }
